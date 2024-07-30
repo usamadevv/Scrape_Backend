@@ -11,6 +11,9 @@ const path=require("path");
 
 const port = 4000; // Choose any port you like
 const routes = require('./routes/routes');
+const chatroute = require('./routes/chatRoute');
+const formroute = require('./routes/formRoute');
+const formResponseRoute = require('./routes/formResRoute');
 
 const leadsroutes = require('./routes/leadRoutes');
 
@@ -62,6 +65,10 @@ db.once('open', () => {
 app.use('/api', routes);
 
 app.use('/api', leadsroutes);
+app.use('/api', formResponseRoute);
+
+app.use('/api', chatroute);
+app.use('/api', formroute);
 app.get('*',(req,res)=>{
   res.sendFile( path.resolve(__dirname,'./myapp','build','index.html'))
 
