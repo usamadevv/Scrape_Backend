@@ -9,7 +9,7 @@ require('dotenv').config();
 
 const path=require("path");
 
-const port = 4000; // Choose any port you like
+const port = 3000; // Choose any port you like
 const routes = require('./routes/routes');
 const chatroute = require('./routes/chatRoute');
 const formroute = require('./routes/formRoute');
