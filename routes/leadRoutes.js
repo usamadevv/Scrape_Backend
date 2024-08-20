@@ -9,5 +9,7 @@ router.post('/createleads', leadController.createleads);
 
 router.post('/updateleadstatus', leadController.update);
 
-router.get('/getallleads', leadController.getall);
+router.post('/getallleads', leadController.getall);
+
+router.get('/getcount', leadController.getcount);
 module.exports = router;

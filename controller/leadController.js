@@ -58,12 +58,19 @@ exports.update = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
-exports.getall = (req, res) => {
+exports.getall = async(req, res) => {
 
-    leads.find({}).then((docs) => {
+    const skip = (req.body.page) * 500;
+
+    const docs = await leads.find({})
+    .skip(skip)
+    .limit(500)
+    .exec()
+    .then((docs) => {
 
         if (docs) {
 
+            console.log(docs)
             res.json(docs);
         }
 
@@ -74,5 +81,16 @@ exports.getall = (req, res) => {
 
         }
     });
+
+};
+exports.getcount = (req, res) => {
+    console.log('hy')
+    const totalCount =  leads.countDocuments({}).then((docs)=>{
+        console.log(docs)
+
+        res.json({ message:  docs});
+    });
+
+  
 
 };

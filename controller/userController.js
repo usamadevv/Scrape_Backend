@@ -52,6 +52,7 @@ exports.verifyUser = (req, res) => {
         // Extract docs data from the decoded payload
         const docs = decoded.user;
         
+        
         res.status(200).json({ message: docs });
     });
   
