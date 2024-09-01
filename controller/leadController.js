@@ -58,6 +58,28 @@ exports.update = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 };
+exports.updateemail = async (req, res) => {
+    try {
+        // Find user by email and password
+        const leadsq = await leads.findOne({ _id: req.body._id });
+
+        if (leadsq) {
+            // Update the leads's last login time or any other field
+            leadsq.email = req.body.email; // Example field, adjust as needed
+            await leadsq.save(); // Save the updated leads document
+
+            // Respond with the updated leads data
+            res.json(leadsq);
+        } else {
+            // leads not found
+            res.status(404).json({ message: 'leads not found' });
+        }
+    } catch (err) {
+        // Handle errors
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
 exports.getall = async(req, res) => {
 
     const skip = (req.body.page) * 500;

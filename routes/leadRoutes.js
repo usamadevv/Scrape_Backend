@@ -9,6 +9,8 @@ router.post('/createleads', leadController.createleads);
 
 router.post('/updateleadstatus', leadController.update);
 
+router.post('/updateleademail', leadController.updateemail);
+
 router.post('/getallleads', leadController.getall);
 
 router.get('/getcount', leadController.getcount);
